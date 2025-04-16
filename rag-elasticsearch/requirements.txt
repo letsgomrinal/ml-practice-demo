@@ -1,4 +1,5 @@
+sentence-transformers==2.2.2
+transformers==4.30.2
+huggingface-hub==0.11.1
+PyPDF2
 elasticsearch
-sentence-transformers 
-PyPDF2 
-openai

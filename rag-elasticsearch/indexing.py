@@ -2,7 +2,9 @@ from sentence_transformers import SentenceTransformer
 from elasticsearch import Elasticsearch
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
-es = Elasticsearch("http://localhost:9200")
+
+#print(SentenceTransformer("all-MiniLM-L6-v2")._target_device)
+es = Elasticsearch("http://localhost:9200",headers={"Content-Type": "application/json"})
 
 def index_chunks(index_name, chunks):
     embeddings = model.encode(chunks)

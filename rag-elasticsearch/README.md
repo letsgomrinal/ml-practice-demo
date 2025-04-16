@@ -42,3 +42,18 @@ Sample response:
 }
 ```
 
+
+
+# Note:
+
+- Ran into some hiccups because TF library:
+
+```
+pip uninstall tensorflow tensorflow-cpu tensorflow-gpu keras
+```
+
+- (2) Install pytorch:
+```
+pip install torch torchvision
+pip install sentence-transformers --no-deps
+```

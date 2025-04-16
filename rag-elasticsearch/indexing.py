@@ -3,8 +3,11 @@ from elasticsearch import Elasticsearch
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
-#print(SentenceTransformer("all-MiniLM-L6-v2")._target_device)
-es = Elasticsearch("http://localhost:9200",headers={"Content-Type": "application/json"})
+# Correct ES connection (no headers, request_timeout used)
+es = Elasticsearch(
+    hosts=["http://localhost:9200"],
+    request_timeout=60
+)
 
 def index_chunks(index_name, chunks):
     embeddings = model.encode(chunks)
@@ -13,7 +16,7 @@ def index_chunks(index_name, chunks):
             "text": chunk,
             "embedding": emb.tolist()
         }
-        es.index(index=index_name, id=f"chunk_{i}", document=doc)
+        es.index(index=index_name, id=f"chunk_{i}", document=doc)  # ES v8+
 
 if __name__ == "__main__":
     index_name = "pdf_rag_chunks"

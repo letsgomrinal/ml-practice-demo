@@ -57,3 +57,9 @@ pip uninstall tensorflow tensorflow-cpu tensorflow-gpu keras
 pip install torch torchvision
 pip install sentence-transformers --no-deps
 ```
+
+# To spin up the ElasticSearch and Kibana containers:
+
+```bash
+docker compose up -d
+```
